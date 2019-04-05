@@ -46,6 +46,15 @@ while True:
             print i
     elif chArray[0]=="map" or chArray[0]=="insert":
         crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0,\"" + chArray[1] + "\",\""+chArray[2] + "\")")
+    elif (chArray[0]=="inc" or chArray[0]=="increment") and len(chArray)==2:
+        crsr.execute("SELECT unfamilarity FROM vocaTable WHERE word=\'" + chArray[1] + "\'")
+        # note: currNum is a list, but num is a tuple
+        currNum = crsr.fetchall()
+        num = currNum[0]
+        if num==0:
+            crsr.execute("UPDATE vocaTable SET=1 WHERE word=\'" + chArray[1] + "\'")
+        else:
+            crsr.execute("UPDATE vocaTable SET=" + str((int(num[0])+1)) + " WHERE word=\'" + chArray[1] + "\'")   
     elif re.search("SELECT", sql_command) or re.search("select", sql_command) or re.search("Select", sql_command):
         crsr.execute(sql_command)
         ans = crsr.fetchall()
