@@ -45,7 +45,7 @@ while True:
         for i in ans:
             print i
     elif chArray[0]=="map" or chArray[0]=="insert":
-        crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0,\"" + chArray[1] + "\",\""+chArray[2] + "\")")
+        crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0,\"" + chArray[1] + "\",\""+chArray[2:] + "\")")
     elif re.search("SELECT", sql_command) or re.search("select", sql_command) or re.search("Select", sql_command):
         crsr.execute(sql_command)
         ans = crsr.fetchall()
