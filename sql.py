@@ -24,32 +24,34 @@ synonym VARCHAR(40));"""
 crsr.execute(sql_command)
 
 while True:
-    sql_command = raw_input("enter sql commands or q to exit: ")
-    chArray = sql_command.split()
-    if sql_command == 'q':
-        # To save the changes in the files. Never skip this.
-        # If we skip this, nothing will be saved in the database.
-        connection.commit()
+   sql_command = raw_input("enter sql commands or q to exit: ")
+   chArray = sql_command.split()
+   if sql_command == 'q':
+      # To save the changes in the files. Never skip this.
+      # If we skip this, nothing will be saved in the database.
+      connection.commit()
 
-        # close the connection
-        connection.close()
-        break
-    elif sql_command=="la" or sql_command=="ls -a":
-        crsr.execute("SELECT * FROM vocaTable")
-        ans = crsr.fetchall()
-        for i in ans:
-            print i
-    elif sql_command=="ls":
-        crsr.execute("SELECT unfamilarity, word, synonym FROM vocaTable")
-        ans = crsr.fetchall()
-        for i in ans:
-            print i
-    elif chArray[0]=="map" or chArray[0]=="insert":
-        crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0,\"" + chArray[1] + "\",\""+chArray[2:] + "\")")
-    elif re.search("SELECT", sql_command) or re.search("select", sql_command) or re.search("Select", sql_command):
-        crsr.execute(sql_command)
-        ans = crsr.fetchall()
-        for i in ans:
-            print i
-    else:
-        crsr.execute(sql_command)
+      # close the connection
+      connection.close()
+      break
+   elif sql_command=="la" or sql_command=="ls -a":
+      crsr.execute("SELECT * FROM vocaTable")
+      ans = crsr.fetchall()
+      for i in ans:
+         print i
+   elif sql_command=="ls":
+      crsr.execute("SELECT unfamilarity, word, synonym FROM vocaTable")
+      ans = crsr.fetchall()
+      for i in ans:
+         print i
+   elif chArray[0]=="map" or chArray[0]=="insert":
+      crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0,\"" + chArray[1] + "\",\""+chArray[2:] + "\")")
+   elif re.search("SELECT", sql_command) or re.search("select", sql_command) or re.search("Select", sql_command):
+      crsr.execute(sql_command)
+      ans = crsr.fetchall()
+      for i in ans:
+         print i
+   elif re.search("rm", sql_command) or re.search("del", sql_command):
+      crsr
+   else:
+      crsr.execute(sql_command)
