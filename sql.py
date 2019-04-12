@@ -15,10 +15,10 @@ crsr = connection.cursor()
 # if the database does not exist, create a new one.
 # SQL command to create a table in the database
 sql_command = """CREATE TABLE IF NOT EXISTS vocaTable (
-voc_Num INTEGER PRIMARY KEY,
-unfamilarity INTEGER,
-word VARCHAR(30),
-synonym VARCHAR(40));"""
+"voc_Num" INTEGER PRIMARY KEY,
+"unfamilarity" INTEGER,
+"word" VARCHAR(30),
+"synonym" VARCHAR(40));"""
 
 # execute the statement
 crsr.execute(sql_command)
@@ -45,13 +45,17 @@ while True:
       for i in ans:
          print i
    elif chArray[0]=="map" or chArray[0]=="insert":
-      crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0,\"" + chArray[1] + "\",\""+chArray[2:] + "\")")
+      crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0,\"" + chArray[1] + "\",\""+chArray[2] + "\")")
+   elif sql_command=='i':
+      theWord = raw_input("Enter the word: ")
+      theMeaning = raw_input("Enter the meaning: ")
+      crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0, " + theWord + "," + theMeaning)
    elif re.search("SELECT", sql_command) or re.search("select", sql_command) or re.search("Select", sql_command):
       crsr.execute(sql_command)
       ans = crsr.fetchall()
       for i in ans:
          print i
    elif re.search("rm", sql_command) or re.search("del", sql_command):
-      crsr
+      crsr.execute("DELETE FROM vocaTable where word = \"" + chArray[1] + "\"")
    else:
       crsr.execute(sql_command)
