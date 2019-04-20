@@ -45,7 +45,7 @@ while True:
       for i in ans:
          print i
    elif chArray[0]=="map" or chArray[0]=="insert":
-      crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0,\"" + chArray[1] + "\",\""+chArray[2] + "\")")
+       crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0,\"" + chArray[1] + "\",\""+" ".join(chArray[2:]) + "\")")
    elif sql_command=='i':
       theWord = raw_input("Enter the word: ")
       theMeaning = raw_input("Enter the meaning: ")
