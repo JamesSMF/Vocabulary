@@ -62,7 +62,31 @@ while True:
 
    # map
    elif chArray[0]=="map" or chArray[0]=="insert":
-       crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0,\"" + chArray[1] + "\",\""+" ".join(chArray[2:]) + "\")")
+      crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0,\"" + chArray[1] + "\",\""+" ".join(chArray[2:]) + "\")")
+
+   # inc
+   elif chArray[0]=="inc" or re.search("\+\+", sql_command):
+      sql_command = re.sub("\+\+","",sql_command)
+      sql_command = re.sub("inc ","",sql_command)
+      sql_command = re.sub("[^a-z]","", sql_command)
+
+      crsr.execute("SELECT unfamilarity FROM vocaTable WHERE word = \"" + sql_command +"\"")
+      org = crsr.fetchall()
+      orgNum = int(org[0][0]) + 1
+      print orgNum
+      crsr.execute("UPDATE vocaTable SET unfamilarity = " + str(orgNum) + " WHERE word = \"" + sql_command + "\"")
+
+   # dec
+   elif chArray[0]=="dec" or re.search("\-\-", sql_command):
+      sql_command = re.sub("\-\-","",sql_command)
+      sql_command = re.sub("dec ","",sql_command)
+      sql_command = re.sub("[^a-z]","", sql_command)
+
+      crsr.execute("SELECT unfamilarity FROM vocaTable WHERE word = \"" + sql_command +"\"")
+      org = crsr.fetchall()
+      orgNum = int(org[0][0]) - 1
+      print orgNum
+      crsr.execute("UPDATE vocaTable SET unfamilarity = " + str(orgNum) + " WHERE word = \"" + sql_command + "\"")
 
    # i
    elif sql_command=='i':
