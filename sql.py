@@ -84,6 +84,10 @@ while True:
       orgNum = int(org[0][0]) - 1
       crsr.execute("UPDATE vocaTable SET unfamilarity = " + str(orgNum) + " WHERE word = \"" + sql_command + "\"")
 
+   # nz
+   elif sql_command=="nz" or sql_command=="nonzero":
+      crsr.execute("SELECT unfamilarity, word, synonym FROM vocaTable WHERE unfamilarity != 0")
+
    # i
    elif sql_command=='i':
       theWord = raw_input("Enter the word: ")
