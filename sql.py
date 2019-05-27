@@ -114,7 +114,7 @@ while True:
       crsr.execute(mess)
       ans = crsr.fetchall()
       for i in ans:
-         print i
+         print i[0]
 
    # else
    else:
