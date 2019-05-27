@@ -1,11 +1,8 @@
-# Python code to demonstrate SQL to fetch data.
-
-# importing the module
 import sqlite3
 import os
 import re
 
-# connect withe the myTable database
+# connect withe the database
 connection = sqlite3.connect("vocabulary.db")
 
 # This statement removes 'u' at the beginning of the output
@@ -17,8 +14,8 @@ crsr = connection.cursor()
 sql_command = """CREATE TABLE IF NOT EXISTS vocaTable (
 "voc_Num" INTEGER PRIMARY KEY,
 "unfamilarity" INTEGER,
-"word" VARCHAR(30),
-"synonym" VARCHAR(40));"""
+"word" VARCHAR(32),
+"synonym" VARCHAR(64));"""
 
 # execute the statement
 crsr.execute(sql_command)
@@ -110,7 +107,11 @@ while True:
 
    # test
    elif chArray[0]=='test':
-      crsr.execute("SELECT word FROM vocaTable")
+      mess = "SELECT word FROM vocaTable"
+      if re.search("[0-9]", sql_command):
+         sql_command = re.sub("[^0-9]","",sql_command)
+         mess = (mess + " ORDER BY RAND() LIMIT " + sql_command)
+      crsr.execute(mess)
       ans = crsr.fetchall()
       for i in ans:
          print i
