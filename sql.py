@@ -50,7 +50,10 @@ while True:
       if re.search("-s", sql_command):         # -s flag: sort by unfamilarity
          mess += " ORDER BY unfamilarity DESC"
       if re.search("-al", sql_command):        # -al: sort alphabetically
-         mess += " ORDER BY word"
+         if not re.search("-s", sql_command):
+            mess += " ORDER BY word"
+         else:
+            mess += ", word"
 
       crsr.execute(mess)
       ans = crsr.fetchall()
