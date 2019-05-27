@@ -87,6 +87,9 @@ while True:
    # nz
    elif sql_command=="nz" or sql_command=="nonzero":
       crsr.execute("SELECT unfamilarity, word, synonym FROM vocaTable WHERE unfamilarity != 0")
+      ans = crsr.fetchall()
+      for i in ans:
+         print i
 
    # i
    elif sql_command=='i':
