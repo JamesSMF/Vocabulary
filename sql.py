@@ -110,7 +110,7 @@ while True:
       mess = "SELECT word FROM vocaTable"
       if re.search("[0-9]", sql_command):
          sql_command = re.sub("[^0-9]","",sql_command)
-         mess = (mess + " ORDER BY RAND() LIMIT " + sql_command)
+         mess = (mess + " ORDER BY RANDOM() LIMIT " + sql_command)
       crsr.execute(mess)
       ans = crsr.fetchall()
       for i in ans:
