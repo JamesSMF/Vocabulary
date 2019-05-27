@@ -102,7 +102,7 @@ while True:
          print i
 
    # rm
-   elif re.search("rm", sql_command) or re.search("del", sql_command):
+   elif chArray[0]=="rm" or chArray[0]=="del":
       crsr.execute("DELETE FROM vocaTable where word = \"" + chArray[1] + "\"")
 
    # test
