@@ -46,11 +46,13 @@ while True:
 
    # ls
    elif chArray[0]=="ls":
-      crsr.execute("SELECT unfamilarity, word, synonym FROM vocaTable")
+      mess = "SELECT unfamilarity, word, synonym FROM vocaTable"
       if re.search("-s", sql_command):         # -s flag: sort by unfamilarity
-         crsr.execute("ORDER BY unfamilarity DESC")
+         mess += " ORDER BY unfamilarity DESC"
       if re.search("-al", sql_command):        # -al: sort alphabetically
-         crsr.execute("ORDER BY word")
+         mess += " ORDER BY word"
+
+      crsr.execute(mess)
       ans = crsr.fetchall()
       for i in ans:
          print i
