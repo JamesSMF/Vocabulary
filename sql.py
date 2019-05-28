@@ -118,4 +118,9 @@ while True:
 
    # else
    else:
-      crsr.execute(sql_command)
+      try:
+         crsr.execute(sql_command)
+         break
+      except:
+         print("Please enter a valid operation. (See README)")
+         continue
