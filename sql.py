@@ -135,3 +135,6 @@ while True:
       except:
          print("Please enter a valid operation. (See README)")
          continue
+
+print("")          # print a newline
+# end while
