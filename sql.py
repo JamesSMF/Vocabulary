@@ -118,7 +118,7 @@ while True:
       if re.search("[0-9]", sql_command):
          sql_command = re.sub("[^0-9]","",sql_command)
          mess = (mess + " ORDER BY RANDOM() LIMIT " + sql_command)
-      elif re.search("-nz", sql_command):
+      if re.search("-nz", sql_command):
          mess += " WHERE unfamilarity != 0"
       crsr.execute(mess)
       ans = crsr.fetchall()
