@@ -69,7 +69,7 @@ while True:
       crsr.execute(mess)
       ans = crsr.fetchall()
       for i in ans:
-         print bcolors.WARNING + i + bcolors.ENDC
+         print bcolors.WARNING + str(i) + bcolors.ENDC
 
       print("")          # print a newline
 
