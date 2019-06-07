@@ -8,4 +8,6 @@ map
 rm
 inc
 dec
-ls
+ls [-al] [-s]
+nz
+zero
