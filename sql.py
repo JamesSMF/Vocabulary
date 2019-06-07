@@ -90,7 +90,7 @@ while True:
 
    # zero
    elif sql_command=="zero":
-      crsr.execute("SELECT unfamilarity, word, synonym FROM vocaTable WHERE unfamilarity == 0")
+      crsr.execute("SELECT unfamilarity, word, synonym FROM vocaTable WHERE unfamilarity = 0")
       ans = crsr.fetchall()
       for i in ans:
          print i
@@ -118,7 +118,7 @@ while True:
       if re.search("-nz", sql_command):
          mess += " WHERE unfamilarity != 0"
       elif re.search("-zero", sql_command):
-         mess += "WHERE unfamilarity == 0"
+         mess += "WHERE unfamilarity = 0"
       if re.search("[0-9]", sql_command):
          sql_command = re.sub("[^0-9]","",sql_command)
          mess = (mess + " ORDER BY RANDOM() LIMIT " + sql_command)
