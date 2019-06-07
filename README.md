@@ -3,11 +3,11 @@ Use SQL to make a simple program for vocabulary memorizing
 This is a command line interface.
 
 ## Basic Operation
-i: insert
-map
-rm
-inc
-dec
-ls [-al] [-s]
-nz
-zero
+i: insert<br>
+map<br>
+rm<br>
+inc<br>
+dec<br>
+ls [-al] [-s]<br>
+nz<br>
+zero<br>
