@@ -41,6 +41,8 @@ while True:
       for i in ans:
          print i
 
+      print("")          # print a newline
+
    # ls
    elif chArray[0]=="ls":
       mess = "SELECT unfamilarity, word, synonym FROM vocaTable"
@@ -57,9 +59,12 @@ while True:
       for i in ans:
          print i
 
+      print("")          # print a newline
+
    # map
    elif chArray[0]=="map" or chArray[0]=="insert":
       crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0,\"" + chArray[1] + "\",\""+" ".join(chArray[2:]) + "\")")
+      print("")          # print a newline
 
    # inc
    elif chArray[0]=="inc" or re.search("\+\+", sql_command):
@@ -70,6 +75,7 @@ while True:
       org = crsr.fetchall()
       orgNum = int(org[0][0]) + 1
       crsr.execute("UPDATE vocaTable SET unfamilarity = " + str(orgNum) + " WHERE word = \"" + sql_command + "\"")
+      print("")          # print a newline
 
    # dec
    elif chArray[0]=="dec" or re.search("\-\-", sql_command):
@@ -80,6 +86,7 @@ while True:
       org = crsr.fetchall()
       orgNum = int(org[0][0]) - 1
       crsr.execute("UPDATE vocaTable SET unfamilarity = " + str(orgNum) + " WHERE word = \"" + sql_command + "\"")
+      print("")          # print a newline
 
    # nz
    elif sql_command=="nz" or sql_command=="nonzero":
@@ -88,6 +95,8 @@ while True:
       for i in ans:
          print i
 
+      print("")          # print a newline
+
    # zero
    elif sql_command=="zero":
       crsr.execute("SELECT unfamilarity, word, synonym FROM vocaTable WHERE unfamilarity = 0")
@@ -95,11 +104,14 @@ while True:
       for i in ans:
          print i
 
+      print("")          # print a newline
+
    # i
    elif sql_command=='i':
       theWord = raw_input("Enter the word: ")
       theMeaning = raw_input("Enter the meaning: ")
       crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0, " + theWord + "," + theMeaning)
+      print("")          # print a newline
 
    # SELECT
    elif re.search("SELECT", sql_command) or re.search("select", sql_command) or re.search("Select", sql_command):
@@ -108,9 +120,12 @@ while True:
       for i in ans:
          print i
 
+      print("")          # print a newline
+
    # rm
    elif chArray[0]=="rm" or chArray[0]=="del":
       crsr.execute("DELETE FROM vocaTable where word = \"" + chArray[1] + "\"")
+      print("")          # print a newline
 
    # test
    elif chArray[0]=='test':
@@ -127,6 +142,8 @@ while True:
       for i in ans:
          print i[0]
 
+      print("")          # print a newline
+
    # else
    else:
       try:
@@ -134,7 +151,7 @@ while True:
          break
       except:
          print("Please enter a valid operation. (See README)")
+         print("")          # print a newline
          continue
 
-print("")          # print a newline
 # end while
