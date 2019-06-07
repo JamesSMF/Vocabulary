@@ -51,7 +51,7 @@ while True:
       crsr.execute("SELECT * FROM vocaTable")
       ans = crsr.fetchall()
       for i in ans:
-         print bcolors.OKBLUE + str(i) + bcolors.ENDC
+         print bcolors.WHITE + str(i) + bcolors.ENDC
 
       print("")          # print a newline
 
@@ -69,7 +69,7 @@ while True:
       crsr.execute(mess)
       ans = crsr.fetchall()
       for i in ans:
-         print bcolors.OKBLUE + str(i) + bcolors.ENDC
+         print bcolors.WHITE + str(i) + bcolors.ENDC
 
       print("")          # print a newline
 
@@ -105,7 +105,7 @@ while True:
       crsr.execute("SELECT unfamilarity, word, synonym FROM vocaTable WHERE unfamilarity != 0")
       ans = crsr.fetchall()
       for i in ans:
-         print bcolors.OKBLUE + str(i) + bcolors.ENDC
+         print bcolors.WHITE + str(i) + bcolors.ENDC
 
       print("")          # print a newline
 
@@ -114,7 +114,7 @@ while True:
       crsr.execute("SELECT unfamilarity, word, synonym FROM vocaTable WHERE unfamilarity = 0")
       ans = crsr.fetchall()
       for i in ans:
-         print bcolors.OKBLUE + str(i) + bcolors.ENDC
+         print bcolors.WHITE + str(i) + bcolors.ENDC
 
       print("")          # print a newline
 
@@ -130,7 +130,7 @@ while True:
       crsr.execute(sql_command)
       ans = crsr.fetchall()
       for i in ans:
-         print bcolors.OKBLUE + str(i) + bcolors.ENDC
+         print bcolors.WHITE + str(i) + bcolors.ENDC
 
       print("")          # print a newline
 
@@ -152,7 +152,7 @@ while True:
       crsr.execute(mess)
       ans = crsr.fetchall()
       for i in ans:
-         print bcolors.OKBLUE + str(i[0]) + bcolors.ENDC
+         print bcolors.WHITE + str(i[0]) + bcolors.ENDC
 
       print("")          # print a newline
 
