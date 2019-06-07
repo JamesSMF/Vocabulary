@@ -88,6 +88,13 @@ while True:
       for i in ans:
          print i
 
+   # zero
+   elif sql_command=="zero":
+      crsr.execute("SELECT unfamilarity, word, synonym FROM vocaTable WHERE unfamilarity == 0")
+      ans = crsr.fetchall()
+      for i in ans:
+         print i
+
    # i
    elif sql_command=='i':
       theWord = raw_input("Enter the word: ")
