@@ -45,7 +45,7 @@ while True:
    elif chArray[0]=="ls":
       mess = "SELECT unfamilarity, word, synonym FROM vocaTable"
       if re.search("-s", sql_command):         # -s flag: sort by unfamilarity
-         mess += " ORDER BY unfamilarity DESC"
+         mess += " ORDER BY unfamilarity"
       if re.search("-al", sql_command):        # -al: sort alphabetically
          if not re.search("-s", sql_command):
             mess += " ORDER BY word"
