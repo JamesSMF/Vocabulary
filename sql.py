@@ -115,11 +115,13 @@ while True:
    # test
    elif chArray[0]=='test':
       mess = "SELECT word FROM vocaTable"
+      if re.search("-nz", sql_command):
+         mess += " WHERE unfamilarity != 0"
+      elif re.search("-zero", sql_command):
+         mess += "WHERE unfamilarity == 0"
       if re.search("[0-9]", sql_command):
          sql_command = re.sub("[^0-9]","",sql_command)
          mess = (mess + " ORDER BY RANDOM() LIMIT " + sql_command)
-      if re.search("-nz", sql_command):
-         mess += " WHERE unfamilarity != 0"
       crsr.execute(mess)
       ans = crsr.fetchall()
       for i in ans:
