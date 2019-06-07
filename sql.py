@@ -2,6 +2,18 @@ import sqlite3
 import os
 import re
 
+class bcolors:
+   HEADER = '\033[95m'
+   OKBLUE = '\033[94m'
+   OKGREEN = '\033[92m'
+   WARNING = '\033[93m'
+   FAIL = '\033[91m'
+   WHITE = '\033[97m'
+   PERFECTBLUE = '\033[96m'
+   ENDC = '\033[0m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+
 # connect withe the database
 connection = sqlite3.connect("vocabulary.db")
 
@@ -57,7 +69,7 @@ while True:
       crsr.execute(mess)
       ans = crsr.fetchall()
       for i in ans:
-         print i
+         print bcolors.WARNING + i + bcolors.ENDC
 
       print("")          # print a newline
 
