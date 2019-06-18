@@ -158,19 +158,20 @@ while True:
 
    # answer
    elif sql_command == "Answer" or sql_command == "answer" or sql_command == "ans":
-      if len(ans)==0:
-         print("Please take a quiz before looking at the answer!")
-      else:
+      try:
          for i in ans:
             crsr.execute("SELECT word, synonym FROM vocaTable WHERE word = \"" + str(i[0]) + "\"")
             meaning = crsr.fetchall()
             print bcolors.WHITE + str(meaning[0]) + bcolors.ENDC
+      except:
+         print("Please take a quiz before looking at the answer!")
+         continue
 
    # else
    else:
       try:
          crsr.execute(sql_command)
-         break
+         continue
       except:
          print("Please enter a valid operation. (See README)")
          print("")          # print a newline
