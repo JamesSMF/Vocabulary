@@ -162,7 +162,7 @@ while True:
          print("Please take a quiz before looking at the answer!")
       else:
          for i in ans:
-            crsr.execute("SELECT word, synonym FROM vocaTable WHERE word = " + str(i[0]))
+            crsr.execute("SELECT word, synonym FROM vocaTable WHERE word = \"" + str(i[0]) + "\"")
          #  print bcolors.WHITE + str(i[0]) + bcolors.ENDC
 
    # else
