@@ -11,3 +11,8 @@ dec<br>
 ls [-al] [-s]<br>
 nz<br>
 zero<br>
+
+## Version 2.1
+Current features:
+-- test [number]: get a quiz with specified number of words
+-- ans: show the answer of the quiz
