@@ -156,6 +156,14 @@ while True:
 
       print("")          # print a newline
 
+   # answer
+   elif sql_command == "Answer" or sql_command == "answer" or sql_command == "ans":
+      if len(ans)==0:
+         print("Please take a quiz before looking at the answer!")
+      else:
+         for i in ans:
+            print bcolors.WHITE + str(i[0]) + bcolors.ENDC
+
    # else
    else:
       try:
