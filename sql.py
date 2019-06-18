@@ -161,8 +161,8 @@ while True:
       if len(ans)==0:
          print("Please take a quiz before looking at the answer!")
       else:
-         for i in ans:
-            print bcolors.WHITE + str(i[0]) + bcolors.ENDC
+         crsr.execute("SELECT word, synonym FROM ans")
+         #  print bcolors.WHITE + str(i[0]) + bcolors.ENDC
 
    # else
    else:
