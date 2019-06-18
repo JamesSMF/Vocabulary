@@ -163,7 +163,8 @@ while True:
       else:
          for i in ans:
             crsr.execute("SELECT word, synonym FROM vocaTable WHERE word = \"" + str(i[0]) + "\"")
-         #  print bcolors.WHITE + str(i[0]) + bcolors.ENDC
+            meaning = crsr.fetchall()
+            print bcolors.WHITE + str(i[0]) + " " + str(meaning[1]) + bcolors.ENDC
 
    # else
    else:
