@@ -33,7 +33,7 @@ sql_command = """CREATE TABLE IF NOT EXISTS vocaTable (
 crsr.execute(sql_command)
 
 while True:
-   sql_command = raw_input("enter sql commands or q to exit: ")
+   sql_command = raw_input("enter commands or q to exit: ")
    chArray = sql_command.split()
 
    # q
