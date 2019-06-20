@@ -149,6 +149,7 @@ while True:
       meaning = crsr.fetchall()
       for i in meaning:
          print bcolors.WHITE + str(i[0]) + bcolors.ENDC
+      print("")
 
    # test
    elif chArray[0]=='test':

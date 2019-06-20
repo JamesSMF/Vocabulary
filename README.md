@@ -16,3 +16,4 @@ zero<br>
 Current features:
 -- test [number]: get a quiz with specified number of words
 -- ans: show the answer of the quiz
+-- peek: when you are not sure about one specific word
