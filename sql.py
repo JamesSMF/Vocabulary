@@ -127,17 +127,27 @@ while True:
 
    # SELECT
    elif re.search("SELECT", sql_command) or re.search("select", sql_command) or re.search("Select", sql_command):
-      crsr.execute(sql_command)
-      ans = crsr.fetchall()
-      for i in ans:
-         print bcolors.WHITE + str(i) + bcolors.ENDC
+      try:
+         crsr.execute(sql_command)
+         ans = crsr.fetchall()
+         for i in ans:
+            print bcolors.WHITE + str(i) + bcolors.ENDC
+      except:
+         print("Please enter a valid SQL SELECT command.")
 
       print("")          # print a newline
 
    # rm
    elif chArray[0]=="rm" or chArray[0]=="del":
-      crsr.execute("DELETE FROM vocaTable where word = \"" + chArray[1] + "\"")
+      crsr.execute("DELETE FROM vocaTable WHERE word = \"" + chArray[1] + "\"")
       print("")          # print a newline
+
+   # peek
+   elif chArray[0]=="peek":
+      theWord = chArray[-1]
+      crsr.execute("SELECT synonym FROM vocaTable WHERE word = \"" + theWord + "\"")
+      for i in crsr.fetchall():
+         print i
 
    # test
    elif chArray[0]=='test':
