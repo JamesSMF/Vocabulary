@@ -146,7 +146,7 @@ while True:
    elif chArray[0]=="peek":
       theWord = chArray[-1]
       crsr.execute("SELECT synonym FROM vocaTable WHERE word = \"" + theWord + "\"")
-      meaning = crsr.fetchall():
+      meaning = crsr.fetchall()
       print bcolors.WHITE + str(meaning[0]) + bcolors.ENDC
 
    # test
