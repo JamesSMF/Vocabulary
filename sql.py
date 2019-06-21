@@ -97,6 +97,8 @@ while True:
       crsr.execute("SELECT unfamilarity FROM vocaTable WHERE word = \"" + sql_command +"\"")
       org = crsr.fetchall()
       orgNum = int(org[0][0]) - 1
+      if orgNum<0:
+         orgNum = 0      # set to zero if it is less than zero
       crsr.execute("UPDATE vocaTable SET unfamilarity = " + str(orgNum) + " WHERE word = \"" + sql_command + "\"")
       print("")          # print a newline
 
