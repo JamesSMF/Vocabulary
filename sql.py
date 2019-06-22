@@ -155,18 +155,41 @@ while True:
 
    # test
    elif chArray[0]=='test':
-      mess = "SELECT word FROM vocaTable"
-      if re.search("-nz", sql_command):
-         mess += " WHERE unfamilarity != 0"
-      elif re.search("-zero", sql_command):
-         mess += " WHERE unfamilarity = 0"
-      if re.search("[0-9]", sql_command):
-         sql_command = re.sub("[^0-9]","",sql_command)
-         mess = (mess + " ORDER BY RANDOM() LIMIT " + sql_command)
-      crsr.execute(mess)
-      ans = crsr.fetchall()
-      for i in ans:
-         print bcolors.WHITE + str(i[0]) + bcolors.ENDC
+      if chArray[1]=="mode":
+         while True:                      # loop entil q is entered
+            print("Enter y for yes, n for no, and q to quit: ")
+            print("Do you know the word: ")
+            test_word = crsr.execute("SELECT word FROM vocaTable ORDER BY RANDOM LIMIT 1")
+            test_mode_input=raw_input(test_word)
+            if test_mode_input=="q":      #quit test mode
+               break
+            elif test_mode_input=="y" or test_mode_input=="yes":
+               crsr.execute("SELECT unfamilarity FROM vocaTable WHERE word = \"" + test_word +"\"")
+               org = crsr.fetchall()
+               orgNum = int(org[0][0]) - 1
+               if orgNum<0:
+                  orgNum = 0              # set to zero if it is less than zero
+               crsr.execute("UPDATE vocaTable SET unfamilarity = " + str(orgNum) + " WHERE word = \"" + test_word + "\"")
+            elif test_mode_input=="n" or test_mode_input=="no":
+               crsr.execute("SELECT unfamilarity FROM vocaTable WHERE word = \"" + test_word +"\"")
+               org = crsr.fetchall()
+               orgNum = int(org[0][0]) + 1
+               crsr.execute("UPDATE vocaTable SET unfamilarity = " + str(orgNum) + " WHERE word = \"" + test_word + "\"")
+            else:
+               print("Please enter \"y\", \"n\", or \"q\"")
+      else:
+         mess = "SELECT word FROM vocaTable"
+         if re.search("-nz", sql_command):
+            mess += " WHERE unfamilarity != 0"
+         elif re.search("-zero", sql_command):
+            mess += " WHERE unfamilarity = 0"
+         if re.search("[0-9]", sql_command):
+            sql_command = re.sub("[^0-9]","",sql_command)
+            mess = (mess + " ORDER BY RANDOM() LIMIT " + sql_command)
+         crsr.execute(mess)
+         ans = crsr.fetchall()
+         for i in ans:
+            print bcolors.WHITE + str(i[0]) + bcolors.ENDC
 
       print("")          # print a newline
 
