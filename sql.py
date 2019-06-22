@@ -161,7 +161,7 @@ while True:
             print("Do you know the word: ")
             test_word = crsr.execute("SELECT word FROM vocaTable ORDER BY RANDOM() LIMIT 1")
             test_word = crsr.fetchall()
-            test_word = str(test_word[0])
+            test_word = str(test_word[0][0])
             print("")
             test_mode_input=raw_input(test_word)
             if test_mode_input=="q":      #quit test mode
