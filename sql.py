@@ -26,8 +26,8 @@ crsr = connection.cursor()
 sql_command = """CREATE TABLE IF NOT EXISTS vocaTable (
 "voc_Num" INTEGER PRIMARY KEY,
 "unfamilarity" INTEGER,
-"word" VARCHAR(32),
-"synonym" VARCHAR(64));"""
+"word" VARCHAR(40),
+"synonym" VARCHAR(80));"""
 
 # execute the statement
 crsr.execute(sql_command)
