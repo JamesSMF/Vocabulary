@@ -26,25 +26,31 @@ crsr = connection.cursor()
 sql_command = """CREATE TABLE IF NOT EXISTS vocaTable (
 "voc_Num" INTEGER PRIMARY KEY,
 "unfamilarity" INTEGER,
-"word" VARCHAR(40),
+"word" VARCHAR(64),
 "synonym" VARCHAR(80));"""
 
 # execute the statement
 crsr.execute(sql_command)
 
 def dec(test_word):
-   crsr.execute("SELECT unfamilarity FROM vocaTable WHERE word = \"" + test_word +"\"")
-   org = crsr.fetchall()
-   orgNum = int(org[0][0]) - 1
-   if orgNum<0:
-      orgNum=0
-   crsr.execute("UPDATE vocaTable SET unfamilarity = " + str(orgNum) + " WHERE word = \"" + test_word + "\"")
+   try:
+      crsr.execute("SELECT unfamilarity FROM vocaTable WHERE word = \"" + test_word +"\"")
+      org = crsr.fetchall()
+      orgNum = int(org[0][0]) - 1
+      if orgNum<0:
+         orgNum=0
+      crsr.execute("UPDATE vocaTable SET unfamilarity = " + str(orgNum) + " WHERE word = \"" + test_word + "\"")
+   except:
+      print(test_word + " not found.")
 
 def inc(test_word):
-   crsr.execute("SELECT unfamilarity FROM vocaTable WHERE word = \"" + test_word +"\"")
-   org = crsr.fetchall()
-   orgNum = int(org[0][0]) + 1
-   crsr.execute("UPDATE vocaTable SET unfamilarity = " + str(orgNum) + " WHERE word = \"" + test_word + "\"")
+   try:
+      crsr.execute("SELECT unfamilarity FROM vocaTable WHERE word = \"" + test_word +"\"")
+      org = crsr.fetchall()
+      orgNum = int(org[0][0]) + 1
+      crsr.execute("UPDATE vocaTable SET unfamilarity = " + str(orgNum) + " WHERE word = \"" + test_word + "\"")
+   except:
+      print(test_word + " not found.")
 
 def peek(theWord):
    crsr.execute("SELECT synonym FROM vocaTable WHERE word = \"" + theWord + "\"")
@@ -139,7 +145,7 @@ while True:
    elif sql_command=='i':
       theWord = raw_input("Enter the word: ")
       theMeaning = raw_input("Enter the meaning: ")
-      crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(" + "0, " + theWord + "," + theMeaning)
+      crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(0, \"" + theWord + "\", \"" + theMeaning + "\")")
       print("")          # print a newline
 
    # SELECT
@@ -156,7 +162,7 @@ while True:
 
    # rm
    elif chArray[0]=="rm" or chArray[0]=="del":
-      crsr.execute("DELETE FROM vocaTable WHERE word = \"" + chArray[1] + "\"")
+      crsr.execute("DELETE FROM vocaTable WHERE word = \"" + " ".join(chArray[1:]) + "\"")
       print("")          # print a newline
 
    # peek
@@ -176,6 +182,7 @@ while True:
             test_mode_input=raw_input(test_word + "\n")
             test_word.strip()             # strip leading and trailing spaces
             if test_mode_input=="q":      #quit test mode
+
                break
             elif test_mode_input=="y" or test_mode_input=="yes":
                dec(test_word)
