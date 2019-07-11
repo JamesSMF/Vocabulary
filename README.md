@@ -14,8 +14,8 @@ zero<br>
 
 ## Version 2.1
 Current features:
--- test [number]: get a quiz with specified number of words
--- ans: show the answer of the quiz
--- peek: when you are not sure about one specific word
-
+-- test [number]: get a quiz with specified number of words <br>
+-- ans: show the answer of the quiz<br>
+-- peek: when you are not sure about one specific word<br>
+<br>
 -- map function improved: when you try mapping a already-existed word, it will be revise instead of creating a new one.
