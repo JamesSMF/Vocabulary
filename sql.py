@@ -103,6 +103,7 @@ while True:
    # map
    elif chArray[0]=="map" or chArray[0]=="insert":
       try:               # check to see if the word is already in the table
+         crsr.execute("IF EXISTS (SELECT unfamilarity FROM vocaTable WHERE word = \"" + chArray[0] +"\")")
          crsr.execute("UPDATE vocaTable SET synonym = \"" + str(" ".join(chArray[2:])) + "\" WHERE word = \"" + chArray[1] + "\"")       # if yes, update instead of creating a new word
       except:
          crsr.execute("INSERT INTO vocaTable(unfamilarity, word, synonym) VALUES(0,\"" + chArray[1] + "\",\""+" ".join(chArray[2:]) + "\")")
