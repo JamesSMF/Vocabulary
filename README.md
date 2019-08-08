@@ -4,7 +4,7 @@ This is a command line interface.
 
 ## Basic Operation
 i: insert<br>
-map <word> <meaning> <br>
+map \<word\> \<meaning\> <br>
 rm<br>
 inc<br>
 dec<br>
