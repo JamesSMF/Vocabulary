@@ -5,12 +5,12 @@ This is a command line interface.
 ## Basic Operation
 i: insert<br>
 map \<word\> \<meaning\> <br>
-rm<br>
-inc<br>
-dec<br>
+rm \<word\><br>
+inc \<word\> (or \<word\>++) <br>
+dec \<word\> (or \<word\>++) <br>
 ls [-al] [-s]<br>
-nz<br>
-zero<br>
+nz: list out all the words with unfamilarity not equal to zero<br>
+zero: list out all the word with unfamilarity equal to zero<br>
 
 ## Version 2.1
 Current features:<br>
