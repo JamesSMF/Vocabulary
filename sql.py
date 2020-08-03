@@ -228,10 +228,9 @@ while True:
    else:
       try:
          crsr.execute(sql_command)
-         continue
       except:
          print("Please enter a valid operation. (See README)")
          print("")          # print a newline
-         continue
+      continue
 
 # end while
